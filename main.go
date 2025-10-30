@@ -7,15 +7,19 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, World!")
 	file, err := os.Open("main.py")
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 	}
 
+	var counter int = 0
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println(line)
+		for _, ch := range line {
+			println(string(ch))
+		}
+		println(string(' '))
+		counter += 1
 	}
 }
